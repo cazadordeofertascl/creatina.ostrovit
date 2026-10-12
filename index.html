@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscando la mejor oferta disponible...</title>
+
+    <!-- 1. CÓDIGO DEL PIXEL DE META OFICIAL Y CORREGIDO -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e);
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://facebook.net');
+      
+      fbq('init', '1120631653745204'); 
+      fbq('track', 'PageView');
+    </script>
+    <!-- FIN DEL CÓDIGO DEL PIXEL -->
+
+    <style>
+        body { background-color: #f4f6f9; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif; }
+        .box { text-align: center; color: #333; background: white; padding: 40px 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); max-width: 360px; width: 90%; }
+        h2 { margin: 0 0 10px 0; font-size: 20px; color: #2c3e50; }
+        p { margin: 0 0 25px 0; font-size: 14px; color: #7f8c8d; line-height: 1.4; }
+        .spinner { border: 4px solid rgba(0, 0, 0, 0.1); width: 36px; height: 36px; border-radius: 50%; border-left-color: #3498db; animation: spin 1s linear infinite; margin: 0 auto 20px auto; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .btn { display: inline-block; background-color: #f1c40f; color: #2c3e50; text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; font-size: 14px; transition: background 0.2s; }
+        .btn:hover { background-color: #e5b80d; }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <div class="spinner"></div>
+        <h2>Verificando stock y promoción...</h2>
+        <p>Te estamos redirigiendo de forma segura a la tienda oficial en Chile. Por favor espera un momento.</p>
+        <!-- Botón manual obligatorio por políticas de transparencia de Meta -->
+        <a href="https://meli.la/1sYmMBs" class="btn">Ir a la oferta ahora</a>
+    </div>
+
+    <!-- 2. REDIRECCIÓN SEGURA (2.5 SEGUNDOS) -->
+    <script>
+        setTimeout(function() {
+            window.location.href = "https://meli.la/1sYmMBs";
+        }, 2500);
+    </script>
+
+</body>
+</html>
