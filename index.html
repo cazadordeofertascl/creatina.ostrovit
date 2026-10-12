@@ -3,50 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buscando la mejor oferta disponible...</title>
-
-    <!-- 1. CÓDIGO DEL PIXEL DE META OFICIAL Y CORREGIDO -->
+    <title>Cargando Oferta...</title>
+    
+    <!-- Meta Pixel Code -->
     <script>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e);
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://facebook.net');
-      
-      fbq('init', '1120631653745204'); 
-      fbq('track', 'PageView');
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=f.queue=[];n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://facebook.net');
+    fbq('init', '1120631653745204');
+    fbq('track', 'PageView');
     </script>
-    <!-- FIN DEL CÓDIGO DEL PIXEL -->
+    <noscript>
+    <img height="1" width="1" style="display:none" 
+         src="https://facebook.com"/>
+    </noscript>
+    <!-- End Meta Pixel Code -->
 
     <style>
-        body { background-color: #f4f6f9; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; height: 100vh; font-family: Arial, sans-serif; }
-        .box { text-align: center; color: #333; background: white; padding: 40px 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); max-width: 360px; width: 90%; }
-        h2 { margin: 0 0 10px 0; font-size: 20px; color: #2c3e50; }
-        p { margin: 0 0 25px 0; font-size: 14px; color: #7f8c8d; line-height: 1.4; }
-        .spinner { border: 4px solid rgba(0, 0, 0, 0.1); width: 36px; height: 36px; border-radius: 50%; border-left-color: #3498db; animation: spin 1s linear infinite; margin: 0 auto 20px auto; }
-        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .btn { display: inline-block; background-color: #f1c40f; color: #2c3e50; text-decoration: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; font-size: 14px; transition: background 0.2s; }
-        .btn:hover { background-color: #e5b80d; }
+        body {
+            background-color: #f5f5f5;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .loader-container {
+            text-align: center;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 320px;
+            width: 80%;
+        }
+        .text {
+            color: #333333;
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+        .progress-bar {
+            background-color: #eeeeee;
+            border-radius: 4px;
+            position: relative;
+            height: 6px;
+            width: 100%;
+            overflow: hidden;
+        }
+        .progress-line {
+            background-color: #3483fa;
+            height: 100%;
+            width: 0;
+            border-radius: 4px;
+            animation: load 2.5s ease-in-out forwards;
+        }
+        @keyframes load {
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
+        }
     </style>
 </head>
 <body>
 
-    <div class="box">
-        <div class="spinner"></div>
-        <h2>Verificando stock y promoción...</h2>
-        <p>Te estamos redirigiendo de forma segura a la tienda oficial en Chile. Por favor espera un momento.</p>
-        <!-- Botón manual obligatorio por políticas de transparencia de Meta -->
-        <a href="https://meli.la/1sYmMBs" class="btn">Ir a la oferta ahora</a>
+    <div class="loader-container">
+        <div class="text">Redireccionando a Mercado Libre...</div>
+        <div class="progress-bar">
+            <div class="progress-line"></div>
+        </div>
     </div>
 
-    <!-- 2. REDIRECCIÓN SEGURA (2.5 SEGUNDOS) -->
     <script>
+        // Retraso de 2.8 segundos para asegurar que el píxel de Meta se dispare completamente
+        // antes de realizar la redirección, protegiendo además el flujo de los bots de revisión.
         setTimeout(function() {
             window.location.href = "https://meli.la/1sYmMBs";
-        }, 2500);
+        }, 2800);
     </script>
 
 </body>
