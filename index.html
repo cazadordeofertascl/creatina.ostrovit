@@ -1,91 +1,187 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cargando Oferta...</title>
-    
+    <meta name="robots" content="noindex, nofollow">
+    <title>Continuar a Mercado Libre</title>
+
     <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=f.queue=[];n.loaded=!0;n.version='2.0';
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';
     n.queue=[];t=b.createElement(e);t.async=!0;
     t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://facebook.net');
+    s.parentNode.insertBefore(t,s)
+    }(window,document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+
     fbq('init', '1120631653745204');
     fbq('track', 'PageView');
+
+    var redirectTimer;
+
+    function continueToMarketplace(event) {
+        event.preventDefault();
+
+        // Evita que el temporizador y el botón redirijan a la vez.
+        clearTimeout(redirectTimer);
+
+        var destination = event.currentTarget.href;
+
+        // Registrar el clic si el píxel está disponible.
+        if (typeof fbq === 'function') {
+            fbq('trackCustom', 'OutboundClick');
+        }
+
+        // Dar un breve margen para intentar enviar el evento.
+        setTimeout(function () {
+            window.location.href = destination;
+        }, 300);
+    }
     </script>
+
     <noscript>
-    <img height="1" width="1" style="display:none" 
-         src="https://facebook.com"/>
+        <img
+            height="1"
+            width="1"
+            style="display:none"
+            src="https://www.facebook.com/tr?id=1120631653745204&amp;ev=PageView&amp;noscript=1"
+            alt=""
+        >
     </noscript>
     <!-- End Meta Pixel Code -->
 
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
             background-color: #f5f5f5;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont,
+                "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
+            padding: 20px;
         }
+
         .loader-container {
             text-align: center;
             background: #ffffff;
             padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            max-width: 320px;
-            width: 80%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            max-width: 360px;
+            width: 100%;
         }
+
         .text {
             color: #333333;
             font-size: 16px;
             font-weight: 500;
+            line-height: 1.5;
             margin-bottom: 20px;
         }
+
         .progress-bar {
             background-color: #eeeeee;
             border-radius: 4px;
-            position: relative;
             height: 6px;
             width: 100%;
             overflow: hidden;
+            margin-bottom: 24px;
         }
+
         .progress-line {
             background-color: #3483fa;
             height: 100%;
-            width: 0;
+            width: 0%;
             border-radius: 4px;
-            animation: load 2.5s ease-in-out forwards;
+            animation: load 2s linear forwards;
         }
+
         @keyframes load {
-            0% { width: 0%; }
-            50% { width: 70%; }
-            100% { width: 100%; }
+            from { width: 0%; }
+            to   { width: 100%; }
+        }
+
+        .continue-button {
+            display: block;
+            width: 100%;
+            padding: 14px 18px;
+            background-color: #3483fa;
+            color: #ffffff;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .continue-button:hover {
+            background-color: #2968c8;
+        }
+
+        .notice {
+            color: #666666;
+            font-size: 12px;
+            line-height: 1.5;
+            margin-top: 16px;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .progress-line {
+                animation: none;
+                width: 100%;
+            }
         }
     </style>
 </head>
-<body>
 
-    <div class="loader-container">
-        <div class="text">Redireccionando a Mercado Libre...</div>
-        <div class="progress-bar">
+<body>
+    <main class="loader-container">
+        <div class="text">
+            Redireccionando a Mercado Libre...
+        </div>
+
+        <div
+            class="progress-bar"
+            role="progressbar"
+            aria-label="Progreso de redirección"
+            aria-valuemin="0"
+            aria-valuemax="100"
+        >
             <div class="progress-line"></div>
         </div>
-    </div>
+
+        <a
+            class="continue-button"
+            href="https://meli.la/1sYmMBs"
+            onclick="continueToMarketplace(event)"
+        >
+            Continuar ahora
+        </a>
+
+        <p class="notice">
+            En unos segundos accederás a Mercado Libre.
+            También puedes continuar mediante el botón.
+        </p>
+    </main>
 
     <script>
-        // Retraso de 2.8 segundos para asegurar que el píxel de Meta se dispare completamente
-        // antes de realizar la redirección, protegiendo además el flujo de los bots de revisión.
-        setTimeout(function() {
+        // Redirección automática a los 2.000 milisegundos.
+        redirectTimer = setTimeout(function () {
             window.location.href = "https://meli.la/1sYmMBs";
-        }, 2800);
+        }, 2000);
     </script>
-
 </body>
 </html>
