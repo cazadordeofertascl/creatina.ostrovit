@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
     <title>Continuar a Mercado Libre</title>
 
     <!-- Meta Pixel Code -->
@@ -26,14 +27,18 @@
 
     function continueToMarketplace(event) {
         event.preventDefault();
+
+        // Evita que el temporizador y el botón redirijan a la vez.
         clearTimeout(redirectTimer);
 
         var destination = event.currentTarget.href;
 
+        // Registrar el clic si el píxel está disponible.
         if (typeof fbq === 'function') {
             fbq('trackCustom', 'OutboundClick');
         }
 
+        // Dar un breve margen para intentar enviar el evento.
         setTimeout(function () {
             window.location.href = destination;
         }, 300);
@@ -105,7 +110,7 @@
 
         @keyframes load {
             from { width: 0%; }
-            to { width: 100%; }
+            to   { width: 100%; }
         }
 
         .continue-button {
@@ -160,7 +165,7 @@
 
         <a
             class="continue-button"
-            href="https://meli.la/1g3ohUB"
+            href="https://meli.la/1sYmMBs"
             onclick="continueToMarketplace(event)"
         >
             Continuar ahora
@@ -173,9 +178,9 @@
     </main>
 
     <script>
-        // Redirección automática después de 2 segundos.
+        // Redirección automática a los 2.000 milisegundos.
         redirectTimer = setTimeout(function () {
-            window.location.href = "https://meli.la/1g3ohUB";
+            window.location.href = "https://meli.la/1sYmMBs";
         }, 2000);
     </script>
 </body>
